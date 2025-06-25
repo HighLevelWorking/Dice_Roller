@@ -11,12 +11,11 @@ Roll_Choices = (1, 2, 3, 4, 5, 6)
 
 Validation = ("yes", "no")
 
-Flag = True
-
 while True:
     
 
     User_Choice = input("Do you want to roll the dice: (Yes/no): ").lower()
+    Flag = True
 
     while User_Choice not in Validation:
         User_Choice = input("Do you want to roll the dice: (yes/no): ").lower()
