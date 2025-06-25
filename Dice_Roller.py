@@ -7,11 +7,22 @@ def Clear_Screen():
 
 Roll_Choices = (1, 2, 3, 4, 5, 6)
 
-Roll_Choice = random.choice(Roll_Choices)
+
 
 Validation = ("yes", "No")
 
-User_Choice = input("Do you want to roll the dice: (Yes/no): ")
-while User_Choice not in Validation:
-    User_Choice = input("Do you want to roll the dice: (yes/no): ").lower()
-Clear_Screen()
+
+
+
+
+while True:
+    User_Choice = input("Do you want to roll the dice: (Yes/no): ")
+    while User_Choice not in Validation:
+        User_Choice = input("Do you want to roll the dice: (yes/no): ").lower()
+ 
+    if User_Choice == "yes":
+        Roll_Choice = random.choice(Roll_Choices)
+        print(Roll_Choice)
+    else: 
+        break
+
