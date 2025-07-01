@@ -5,10 +5,6 @@ import random
 def Clear_Screen():
     os.system("cls")
 
-
-
-Roll_Choices = (1, 2, 3, 4, 5, 6)
-
 Validation = ("yes", "no")
 
 while True:
@@ -21,10 +17,34 @@ while True:
         User_Choice = input("Do you want to roll the dice: (yes/no): ").lower()
 
     if User_Choice == "yes":
-        Num_Of_Die = int(input("How many 6 sided die do you want to use: "))
-        for i in range (0, Num_Of_Die):
-            Roll_Choice = random.choice(Roll_Choices)
-            print(f"{Roll_Choice: >2}", end = ", ")
+        
+        while True:
+            while True:
+                try:
+                    Size = int(input("How many sided die do you want to use? "))
+                    break
+                except:
+                    print("Enter a valid integer value")
+            if Size > 0:
+                Roll_Choices = list(range(1, Size+1))
+                break
+            else:
+                print("Please enter an integer value greater then 0")
+
+        while True:
+            while True:
+                try:
+                    Num_Of_Die = int(input(f"How many {Size} sided die do you want to use: "))
+                    break
+                except:
+                    print("Enter a valid integer value")
+            if Num_Of_Die > 0:
+                width = len(str(Size))
+                rolls = [f"{random.choice(Roll_Choices):0{width}}" for _ in range(Num_Of_Die)]
+                print(", ".join(rolls))
+                break
+            else:
+                print("Enter an integer value greater then 0")
     else: 
         Exiting = input("Are you sure you want to exit this program? (yes/no) ").lower()
         if Exiting == "yes":
